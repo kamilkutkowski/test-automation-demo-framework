@@ -1,0 +1,23 @@
+ext{
+    serenityCoreVersion = '2.1.0'
+    serenityCucumberVersion = '1.9.51'
+    junitVersion='4.12'
+    assertJVersion='3.8.0'
+    lombokVersion='1.18.10'
+    driverManagerVersion='3.7.1'
+
+    libs = [
+            lombok: "org.projectlombok:lombok:${lombokVersion}",
+            test: [
+                    serenity: [
+                            core: "net.serenity-bdd:serenity-core:${serenityCoreVersion}",
+                            junit: "net.serenity-bdd:serenity-junit:${serenityCoreVersion}",
+                            cucumber: "net.serenity-bdd:serenity-cucumber:${serenityCucumberVersion}",
+                            restAssured: "net.serenity-bdd:serenity-rest-assured:${serenityCoreVersion}"
+                    ],
+                    junit: "junit:junit:${junitVersion}",
+                    assertj: "org.assertj:assertj-core:${assertJVersion}",
+                    driverManager: "io.github.bonigarcia:webdrivermanager:${driverManagerVersion}"
+            ]
+    ]
+}
