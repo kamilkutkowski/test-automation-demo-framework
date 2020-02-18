@@ -34,6 +34,7 @@ dependencies {
             libs.test.junit,
             libs.test.assertj,
             libs.test.driverManager
+    annotationProcessor libs.lombok
 }
 
 test {
