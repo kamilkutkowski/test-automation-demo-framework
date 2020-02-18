@@ -7,10 +7,13 @@ import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import net.serenitybdd.rest.SerenityRest;
+
+import java.util.Collections;
+import java.util.Map;
+
+import static net.serenitybdd.core.Serenity.sessionVariableCalled;
+import static net.serenitybdd.core.Serenity.setSessionVariable;
 
 public class ApiUtils {
 
@@ -61,9 +64,6 @@ public class ApiUtils {
 		RestAssured.baseURI = ApiResources.DEFAULT_URL;
 		RestAssured.useRelaxedHTTPSValidation();
 		RestAssured.defaultParser = Parser.JSON;
-		if (ApiResources.PROXY_FLAG) {
-			SerenityRest.proxy(ApiResources.PROXY_HOST, ApiResources.PROXY_PORT);
-		}
 	}
 
 	private RequestSpecification requestSpecification(Map<String, String> params, Map<String, String> headers) {
