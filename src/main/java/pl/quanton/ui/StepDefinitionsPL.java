@@ -4,6 +4,7 @@ import cucumber.api.java.pl.Kiedy;
 import cucumber.api.java.pl.Mając;
 import cucumber.api.java.pl.Wtedy;
 import net.thucydides.core.annotations.Steps;
+import pl.quanton.api.ApiSteps;
 import pl.quanton.ui.pages.Wikipedia;
 import pl.quanton.ui.steps.CommonSteps;
 
@@ -13,6 +14,9 @@ public class StepDefinitionsPL {
 
     @Steps
     private CommonSteps commonSteps;
+
+    @Steps
+    private ApiSteps apiSteps;
 
     @Mając("^otworzoną główną stronę portalu (.*)$")
     public void iAmOnTheSpecificMainPage(String pageName) {
@@ -27,6 +31,7 @@ public class StepDefinitionsPL {
     @Wtedy("^otrzymuję liste wyników dla hasła (.*)$")
     public void iCanSeeSpecificWikiPage(String foundPage) {
         commonSteps.confirmSucessfullSearching(foundPage);
+        apiSteps.searchSomeTextInDuckDuck(foundPage);
     }
 
     @Wtedy("^mogę zobaczyć znalezione elementy$")

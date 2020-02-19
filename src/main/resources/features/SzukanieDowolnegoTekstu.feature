@@ -1,7 +1,8 @@
 #language:pl
   @PL
   Potrzeba biznesowa: Znajdź przykładowe obrazki
-    W ramach tej potrzeby biznesowej jako użytkownik Internetu chcę znaleźć wyniki mojej wyszukiwanej frazy.
+    W ramach tej potrzeby biznesowej jako użytkownik Internetu,
+    chcę znaleźć wyniki mojej wyszukiwanej frazy.
 
   Scenariusz: Znajdź zdjęcia biurowca Warta Tower
     Mając otworzoną główną stronę portalu Wikipedia
