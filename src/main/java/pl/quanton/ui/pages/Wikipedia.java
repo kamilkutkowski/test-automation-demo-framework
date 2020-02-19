@@ -5,6 +5,8 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class Wikipedia extends PageObject {
 
     @FindBy(css = "input[type='search']")
@@ -31,17 +33,15 @@ public class Wikipedia extends PageObject {
                 .getText();
     }
 
-    public void openAllAvailablePhotos() {
-        gallery
+    public List<WebElementFacade> openAllAvailablePhotos() {
+        return gallery
                 .waitUntilVisible()
-                .thenFindAll(By.tagName("li"))
-                .forEach(element -> {
-                    element
-                            .waitUntilClickable()
-                            .click();
-                    closePhoto
-                            .waitUntilClickable()
-                            .click();
-                });
+                .thenFindAll(By.tagName("li"));
+    }
+
+    public void closePicture(){
+        closePhoto
+                .waitUntilClickable()
+                .click();
     }
 }

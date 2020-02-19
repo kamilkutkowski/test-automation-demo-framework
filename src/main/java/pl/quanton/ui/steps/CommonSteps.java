@@ -8,6 +8,7 @@ import net.serenitybdd.core.Serenity;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import net.serenitybdd.core.pages.PageObject;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
 import pl.quanton.ui.pages.Google;
 import pl.quanton.ui.pages.Wikipedia;
@@ -73,22 +74,9 @@ public class CommonSteps extends PageObject {
     }
 
     @Step
-    public void userClickOnFirstFourElements(){
-        switch (sessionVariableCalled(PAGE)
-                .toString()
-                .toLowerCase()) {
-            case "wikipedia":
-                wikipedia.openAllAvailablePhotos();
-                break;
-            case "google":
-
-                break;
-            case "youtube":
-
-                break;
-            default:
-                throw new PendingException("Typed page is not supported");
-        }
+    public void userClickOnFoundElement(WebElementFacade element) {
+        element.waitUntilClickable()
+                .click();
     }
 
     @Override

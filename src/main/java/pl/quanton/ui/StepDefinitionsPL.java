@@ -4,9 +4,12 @@ import cucumber.api.java.pl.Kiedy;
 import cucumber.api.java.pl.Mając;
 import cucumber.api.java.pl.Wtedy;
 import net.thucydides.core.annotations.Steps;
+import pl.quanton.ui.pages.Wikipedia;
 import pl.quanton.ui.steps.CommonSteps;
 
 public class StepDefinitionsPL {
+
+    private Wikipedia wikipedia;
 
     @Steps
     private CommonSteps commonSteps;
@@ -28,6 +31,9 @@ public class StepDefinitionsPL {
 
     @Wtedy("^mogę zobaczyć znalezione elementy$")
     public void iCanOpenEverySingleAvailablePhoto() {
-        commonSteps.userClickOnFirstFourElements();
+        wikipedia.openAllAvailablePhotos().forEach(photo -> {
+            commonSteps.userClickOnFoundElement(photo);
+            wikipedia.closePicture();
+        });
     }
 }

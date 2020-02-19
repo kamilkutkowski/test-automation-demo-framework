@@ -4,9 +4,12 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
+import pl.quanton.ui.pages.Wikipedia;
 import pl.quanton.ui.steps.CommonSteps;
 
 public class StepDefinitionsEN {
+
+    private Wikipedia wikipedia;
 
     @Steps
     private CommonSteps commonSteps;
@@ -29,6 +32,10 @@ public class StepDefinitionsEN {
 
     @Then("^I can open first four available elements$")
     public void iCanOpenEverySingleAvailablePhoto() {
-        commonSteps.userClickOnFirstFourElements();
+        wikipedia.openAllAvailablePhotos().forEach(photo -> {
+            commonSteps.userClickOnFoundElement(photo);
+            wikipedia.closePicture();
+        });
+
     }
 }
