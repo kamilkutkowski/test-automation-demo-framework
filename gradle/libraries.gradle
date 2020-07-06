@@ -1,0 +1,25 @@
+ext {
+    slf4jVersion = '1.7.7'
+    serenityCoreVersion = '2.1.0'
+    serenityCucumberVersion = '1.9.51'
+    junitVersion = '4.12'
+    assertJVersion = '3.8.0'
+    lombokVersion = '1.18.10'
+    driverManagerVersion = '3.7.1'
+    logbackVersion = '1.2.3'
+
+    libs = [
+            lombok       : "org.projectlombok:lombok:${lombokVersion}",
+            logback      : "ch.qos.logback:logback-classic:${logbackVersion}",
+            serenity     : [
+                    core       : "net.serenity-bdd:serenity-core:${serenityCoreVersion}",
+                    junit      : "net.serenity-bdd:serenity-junit:${serenityCoreVersion}",
+                    cucumber   : "net.serenity-bdd:serenity-cucumber:${serenityCucumberVersion}",
+                    restAssured: "net.serenity-bdd:serenity-rest-assured:${serenityCoreVersion}",
+            ],
+            slf4jApi     : "org.slf4j:slf4j-api:${slf4jVersion}",
+            junit        : "junit:junit:${junitVersion}",
+            assertj      : "org.assertj:assertj-core:${assertJVersion}",
+            driverManager: "io.github.bonigarcia:webdrivermanager:${driverManagerVersion}",
+    ]
+}
