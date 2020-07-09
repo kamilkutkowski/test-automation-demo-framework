@@ -1,4 +1,4 @@
-defaultTasks 'clean','test','aggregate'
+defaultTasks 'clean', 'test', 'aggregate'
 
 repositories {
     mavenLocal()
@@ -21,9 +21,16 @@ apply plugin: 'idea'
 apply plugin: 'net.serenity-bdd.aggregator'
 apply from: "$rootDir/gradle/libraries.gradle"
 
-
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+jar {
+	manifest {
+		attributes 'Implementation-Title': 'Automated Framework Demo',
+				'Main-Class': 'pl.quanton.ApiTestSuite.java'
+	}
+	from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
 
 dependencies {
     compile libs.lombok,
@@ -43,7 +50,7 @@ test {
     testLogging.showStandardStreams = true
     systemProperties System.getProperties()
 }
-
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
 gradle.startParameter.continueOnFailure = true
-
 test.finalizedBy(aggregate)
