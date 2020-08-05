@@ -3,6 +3,7 @@ package pl.quanton.ui.pages;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -44,8 +45,9 @@ public class Wikipedia extends PageObject {
     }
 
     public void closePicture() {
-        closePhoto
-                .waitUntilClickable()
-                .click();
+        getDriver()
+                .switchTo()
+                .activeElement()
+                .sendKeys(Keys.ESCAPE);
     }
 }
