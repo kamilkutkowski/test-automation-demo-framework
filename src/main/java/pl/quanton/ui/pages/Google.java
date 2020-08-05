@@ -16,11 +16,6 @@ public class Google extends PageObject {
         searchingInputField
                 .waitUntilVisible()
                 .typeAndEnter(searchingPhrase);
-    }
 
-//    public void clickInSearchButton(){
-//        submitSearchingButton
-//                .waitUntilClickable()
-//                .click();
-//    }
+    }
 }
