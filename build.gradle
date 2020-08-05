@@ -1,3 +1,7 @@
+/**
+ * To clear dependencies use additional parameter --refresh-dependencies
+ */
+
 defaultTasks 'clean', 'test', 'aggregate'
 
 repositories {
@@ -11,7 +15,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:2.0.69")
+        classpath("net.serenity-bdd:serenity-gradle-plugin:2.1.1")
     }
 }
 
@@ -21,11 +25,12 @@ apply plugin: 'idea'
 apply plugin: 'net.serenity-bdd.aggregator'
 apply from: "$rootDir/gradle/libraries.gradle"
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.9
+targetCompatibility = 1.9
 
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
+
 
 dependencies {
     compile libs.lombok,
@@ -41,10 +46,20 @@ dependencies {
     annotationProcessor libs.lombok
 }
 
+task encoding(type: Exec){
+    if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+        commandLine 'cmd', '/c', 'proper-encoding.cmd'
+    } else {
+        commandLine './proper-encoding.sh'
+    }
+}
+
+clean.finalizedBy(encoding)
+
 test {
+    systemProperty "file.encoding", "utf-8"
     testLogging.showStandardStreams = true
     systemProperties System.getProperties()
 }
-
 gradle.startParameter.continueOnFailure = true
 test.finalizedBy(aggregate)
