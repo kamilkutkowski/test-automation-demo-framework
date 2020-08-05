@@ -31,7 +31,6 @@ targetCompatibility = 1.9
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
 
-
 dependencies {
     compile libs.lombok,
             libs.slf4jApi,
@@ -61,5 +60,6 @@ test {
     testLogging.showStandardStreams = true
     systemProperties System.getProperties()
 }
+
 gradle.startParameter.continueOnFailure = true
 test.finalizedBy(aggregate)
