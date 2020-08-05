@@ -34,12 +34,16 @@ public class Wikipedia extends PageObject {
     }
 
     public List<WebElementFacade> openAllAvailablePhotos() {
-        return gallery
-                .waitUntilVisible()
-                .thenFindAll(By.tagName("li"));
+        if (gallery.isVisible()) {
+            return gallery
+                    .waitUntilVisible()
+                    .thenFindAll(By.tagName("li"));
+        } else {
+            return findAll(By.xpath("//a[@class='image']"));
+        }
     }
 
-    public void closePicture(){
+    public void closePicture() {
         closePhoto
                 .waitUntilClickable()
                 .click();
