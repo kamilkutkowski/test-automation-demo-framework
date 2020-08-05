@@ -5,6 +5,7 @@
 
 trigger:
 - master
+- dev
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -16,12 +17,12 @@ steps:
     gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.9'
+    jdkVersionOption: '1.11'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'clean test'
-- task: PublishPipelineArtifact@1
+- task: PublishPipelineArtifact@0
   inputs:
     targetPath: $(System.DefaultWorkingDirectory)/target/site/serenity
     artifactName: index.html
