@@ -10,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
+import pl.quanton.ui.pages.Allegro;
 import pl.quanton.ui.pages.Google;
 import pl.quanton.ui.pages.Wikipedia;
 import pl.quanton.ui.pages.YouTube;
@@ -26,6 +27,7 @@ public class CommonSteps extends PageObject {
     private Google google;
     private Wikipedia wikipedia;
     private YouTube youTube;
+    private Allegro allegro;
     private final static String PAGE = "page";
 
     @Step
@@ -48,6 +50,12 @@ public class CommonSteps extends PageObject {
                 break;
             case "youtube":
                 youTube.typeSearchingPhraseAndSubmit(customSearchingPhrase);
+                break;
+            case "allegro":
+                if (allegro.popUpVisibility()) {
+                    allegro.closeAllegroPopUp();
+                }
+                allegro.typeSearchPhraseAndSearch(customSearchingPhrase);
                 break;
             default:
                 throw new PendingException("Typed page is not supported");
@@ -75,7 +83,8 @@ public class CommonSteps extends PageObject {
 
     @Step
     public void userClickOnFoundElement(WebElementFacade element) {
-        element.waitUntilClickable()
+        element
+                .waitUntilClickable()
                 .click();
     }
 
@@ -89,6 +98,7 @@ public class CommonSteps extends PageObject {
         pages.put("wikipedia", "https://pl.wikipedia.org/");
         pages.put("youtube", "https://www.youtube.com/");
         pages.put("google", "https://www.google.pl/");
+        pages.put("allegro", "https://allegro.pl/");
         return pages;
     }
 

@@ -4,6 +4,6 @@ Feature: Find some random pictures
 
   Scenario: Find Warta Tower photos
     Given I am on the Wikipedia main page
-    When I type Warta Tower keyword and submit
-    Then I see the Warta Tower search result page
+    When I type Rondo 1 keyword and submit
+    Then I see the Rondo 1 search result page
     And I can open first four available elements

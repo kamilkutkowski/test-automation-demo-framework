@@ -31,7 +31,6 @@ public class StepDefinitionsPL {
     @Wtedy("^otrzymuję liste wyników dla hasła (.*)$")
     public void iCanSeeSpecificWikiPage(String foundPage) {
         commonSteps.confirmSucessfullSearching(foundPage);
-        apiSteps.searchSomeTextInDuckDuck(foundPage);
     }
 
     @Wtedy("^mogę zobaczyć znalezione elementy$")
