@@ -1,4 +1,4 @@
-#language:pl
+#language: pl
 @PL
 Potrzeba biznesowa: Znajdź przykładowe obrazki
   W ramach tej potrzeby biznesowej jako użytkownik Internetu,
