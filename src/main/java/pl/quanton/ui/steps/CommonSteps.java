@@ -1,12 +1,7 @@
 package pl.quanton.ui.steps;
 
 import cucumber.api.PendingException;
-import cucumber.runtime.CucumberException;
 import lombok.extern.slf4j.Slf4j;
-import net.serenitybdd.core.Serenity;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
@@ -20,6 +15,7 @@ import java.util.Map;
 
 import static net.serenitybdd.core.Serenity.sessionVariableCalled;
 import static net.serenitybdd.core.Serenity.setSessionVariable;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 public class CommonSteps extends PageObject {

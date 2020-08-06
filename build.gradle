@@ -49,7 +49,7 @@ task encoding(type: Exec){
     if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
         commandLine 'cmd', '/c', 'proper-encoding.cmd'
     } else {
-        commandLine './proper-encoding.sh'
+        commandLine 'sh', 'proper-encoding.sh'
     }
 }
 
