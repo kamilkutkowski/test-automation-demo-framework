@@ -25,4 +25,4 @@ steps:
 - task: PublishPipelineArtifact@0
   inputs:
     targetPath: $(System.DefaultWorkingDirectory)/target/site/serenity
-    artifactName: index.html
+    artifactName: Test Report
