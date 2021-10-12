@@ -53,3 +53,17 @@ Temporary Items
 /**/*.pom
 /**/*.iml
 /**/local.log
+
+# Visual Studio Code
+
+/**/.vscode/**/*
+
+# Gradle
+
+/**/.gradle/**/*
+
+# Other binaries
+
+/**/bin/**/*
+/**/build/**/*
+/**/history/**/*
